@@ -1,5 +1,1 @@
-Here you can say lots of fun things about your site.
-
-Maybe say a some things about yourself.
-
-Or maybe what you plan to blog about.
+I work for Red Hat as a consultant. My career spans 25 years of solving customer problems with Open source technologies. These articles will cover things I find useful and interesting and worth sharing.
