@@ -1,6 +1,6 @@
 ## How to use Route Templates to get more value out of your Camel Route  
 
-This article is about a cool feature in Apache Camel that can help you create more flexible, re-usable integration solutions. The feature is called Route Templates and I will tell you why I think this feature is unique and will make the routes you create more flexible, reusable and maintainable. This ultimately means a more resilient and hardened integration solution. I will also provide a sample integration solution that uses the feature to define routes. 
+This article is about a cool feature in Apache Camel that can help you create more flexible, re-usable integration solutions. The feature is called [Route Templates](https://camel.apache.org/manual/route-template.html) and I will tell you why I think this feature is unique and will make the routes you create more flexible, reusable and maintainable. This ultimately means a more resilient and hardened integration solution. I will also provide a sample integration solution that uses the feature to define routes. 
 
 ---
 
@@ -24,12 +24,12 @@ Why would I want to implement my route as a route template? Whats in it for me a
 
 ### Creating Routes from a Properties File 
 
-I'll start with the end in mind. Lets imagine I've developed a Camel route to consume purchase orders from a directory using the Camel [file](https://camel.apache.org/components/latest/file-component.html) component. Using [split](https://camel.apache.org/components/latest/eips/split-eip.html) Camel will split those files into sub messages based on individual line-items. Those messages will then be written to a JMS message queue. Note such a route sounds fairly trivial but when you start implementing you will soon notice the code complexity can grow rather quickly. 
+I'll start with the end in mind. Lets imagine I've developed a Camel route to consume purchase orders from a directory using the Camel [file](https://camel.apache.org/components/latest/file-component.html) component. Using [split](https://camel.apache.org/components/latest/eips/split-eip.html) Camel will split those files into sub messages based on individual line-items. Those messages will then be written to a JMS message queue. Note such a route sounds fairly trivial but once you start implementing, maybe you end up with more complexity than you originally anticipated.  
 
 Let's say my route is wildly successful and my boss wants the pattern re-used in lots of places throughout the organization.  
-When you've take the time to implement your route as a route template, someone can now create your route in a very straightforward way without code, rather by configuration. 
+If you've take the time to implement your route as a route template, someone can now create your route in a very straightforward way without code, rather by configuration. This configuration-driven route creation is a byproduct of the awesomeness of Route templates. 
 
-Such that the following Spring properties file is all you'll need to instantiate routes based on your route template. 
+Such that the following Spring properties file is all you'll need to instantiate a route based on your route template. 
 
 
 (TODO image file of properties)
@@ -39,9 +39,16 @@ Such that the following Spring properties file is all you'll need to instantiate
 
 This configuration driven approach is externalized Route Definitions
 
+Here's a simple example that demonstrates the recipe for creating a route template.  And from the same example the creation of a couple of those routes. There's also an example showing route creation using a properties file (my favorite). 
+
+Camel also supports [creating routes from custom sources of template parameters](https://camel.apache.org/manual/route-template.html#_creating_routes_from_custom_sources_of_template_parameters) opening the door to flexibility in how the parameters that drive route creation are externalized.  This boosts what is possible allowing Camel to pull configuration from virtually any external source. Think cloud-native applications running in Openshift where routing configurations is stored as Kubernetes resources such as a ConfigMaps. 
+
+Camel offers freedom not only the integration scenario you can solve but with route templates gives flexibility in the configuration mechanism that drives the creation of those routes. 
 
 
 ### A More Useful Example 
+
+Here is a solution for a [JMS message bridge](https://github.com/lcurry/camel-jms-bridge) built on Camel using route templates that offers a fully-baked solution to bridge messages between IBM MQ and ActiveMQ.  
 
 
 ### Summary 
@@ -49,7 +56,6 @@ This configuration driven approach is externalized Route Definitions
 Route templates provide a middle ground in terms of abstraction - 
 between writing a completely custom route using traditional Camel DSL 
 low-code and no-code myth when building enterprise-level applications
-
 
 Perhaps your organization has need for some common integration patterns 
 
@@ -59,24 +65,4 @@ HTTP to HTTP
 JMS to JMS 
 JMS to File 
 
-
-#### Some T-SQL Code
-
-```tsql
-SELECT This, [Is], A, Code, Block -- Using SSMS style syntax highlighting
-    , REVERSE('abc')
-FROM dbo.SomeTable s
-    CROSS JOIN dbo.OtherTable o;
-```
-
-#### Some PowerShell Code
-
-```powershell
-Write-Host "This is a powershell Code block";
-
-# There are many other languages you can use, but the style has to be loaded first
-
-ForEach ($thing in $things) {
-    Write-Output "It highlights it using the GitHub style"
-}
-```
+You know the hard work it takes to deliver hardened and production-ready routes. Start identifying some of these integration patterns you've developed or will develop that can be reused across your enterprise and start making use of Camel route templates to empower others to benefit.  
