@@ -26,13 +26,11 @@ Why would I want to implement my route as a route template? Whats in it for me a
 
 I'll start with the end in mind. Lets imagine I've developed a Camel route to consume purchase orders from a directory using the Camel [file](https://camel.apache.org/components/latest/file-component.html) component. Using [split](https://camel.apache.org/components/latest/eips/split-eip.html) Camel will split those files into sub messages based on individual line-items. Those messages will then be written to a JMS message queue. Note such a route sounds fairly trivial but once you start implementing, maybe you end up with more complexity than you originally anticipated.  
 
-Let's say my route is wildly successful and my boss wants the pattern re-used in lots of places throughout the organization.  
-If you've take the time to implement your route as a route template, someone can now create your route in a very straightforward way without code, rather by configuration. This configuration-driven route creation is a byproduct of the awesomeness of Route templates. 
+Let's say my route is wildly successful and my boss wants the pattern re-used in lots of places throughout the organization. If you've take the time to implement your route as a route template, someone can now create your route in a very straightforward way without code, rather by configuration. This configuration-driven route creation is a byproduct of the awesomeness of Route templates. 
 
 Such that the following Spring properties file is all you'll need to instantiate a route based on your route template. 
 
-
-(TODO image file of properties)
+![alt text](../img/Camel-Route-Template.png "Example Route Configuration")
 
 ### Creating the route template - 
 
