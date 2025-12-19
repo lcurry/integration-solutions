@@ -34,14 +34,11 @@ Such that the following Spring properties file is all you'll need to instantiate
 
 ### Creating the route template - 
 
+Here is a [simple route template example](https://github.com/apache/camel-examples/blob/main/routetemplate/src/main/java/org/apache/camel/example/MyRouteTemplates.java) that demonstrates the recipe for creating a route template.  And from the same example the [code to instantiate a couple of those routes](https://github.com/apache/camel-examples/blob/main/routetemplate/src/main/java/org/apache/camel/example/MyTemplateBuilder.java). There's also an example showing [route creation using a properties file](https://github.com/apache/camel-examples/blob/main/routetemplate/src/main/resources/application.properties) (my favorite). 
 
-This configuration driven approach is externalized Route Definitions
+Camel also supports [creating routes from custom sources of template parameters](https://camel.apache.org/manual/route-template.html#_creating_routes_from_custom_sources_of_template_parameters) opening the door to flexibility in how the parameters that drive route creation are externalized.  This boosts what is possible - allowing Camel to pull configuration from virtually any external source. Think cloud-native applications running in Openshift where routing configurations is stored as Kubernetes resources such as a ConfigMaps. 
 
-Here's a simple example that demonstrates the recipe for creating a route template.  And from the same example the creation of a couple of those routes. There's also an example showing route creation using a properties file (my favorite). 
-
-Camel also supports [creating routes from custom sources of template parameters](https://camel.apache.org/manual/route-template.html#_creating_routes_from_custom_sources_of_template_parameters) opening the door to flexibility in how the parameters that drive route creation are externalized.  This boosts what is possible allowing Camel to pull configuration from virtually any external source. Think cloud-native applications running in Openshift where routing configurations is stored as Kubernetes resources such as a ConfigMaps. 
-
-Camel offers freedom not only the integration scenario you can solve but with route templates gives flexibility in the configuration mechanism that drives the creation of those routes. 
+Camel offers freedom not only the variety of integration scenarios you can solve but with route templates gives flexibility in the configuration mechanism that drives the creation of those routes. 
 
 
 ### A More Useful Example 
@@ -51,16 +48,6 @@ Here is a solution for a [JMS message bridge](https://github.com/lcurry/camel-jm
 
 ### Summary 
 
-Route templates provide a middle ground in terms of abstraction - 
-between writing a completely custom route using traditional Camel DSL 
-low-code and no-code myth when building enterprise-level applications
+Route templates provide a middle ground in terms of abstraction. An abstraction that falls somewhere between writing custom java code to implement a route (using traditional Camel DSL) and low-code / no-code / drag-and-drop techniques (mostly a myth when it come to building enterprise-level applications.)
 
-Perhaps your organization has need for some common integration patterns 
-
-File to File
-FTP to FTP 
-HTTP to HTTP 
-JMS to JMS 
-JMS to File 
-
-You know the hard work it takes to deliver hardened and production-ready routes. Start identifying some of these integration patterns you've developed or will develop that can be reused across your enterprise and start making use of Camel route templates to empower others to benefit.  
+Perhaps your organization has need for some common integration patterns. You know the hard work it takes to deliver hardened and production-ready routes. Start identifying some of the integration patterns you've developed or will develop that can be reused across your enterprise and start making use of Camel route templates to empower others to benefit.  
