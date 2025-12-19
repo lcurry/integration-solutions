@@ -30,7 +30,7 @@ Let's say my route is wildly successful and my boss wants the pattern re-used in
 
 Such that the following Spring properties file is all you'll need to instantiate a route based on your route template. 
 
-![Example Route Configuration](/integration-solutions/_img/2025-12-02/Camel-Route-Template.png)
+![Example Route Configuration](/integration-solutions/img/2025-12-02/Camel-Route-Template.png)
 
 ### Creating the route template - 
 
